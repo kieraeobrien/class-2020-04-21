@@ -378,6 +378,23 @@ summary {
 <li><p>What is the age of oldest person who responded to this survey?</p></li>
 <li><p>What proportion of females voted for Trump?</p></li>
 </ol>
+<pre class="r"><code># Age of oldest respondent
+
+cces %&gt;%
+  arrange(desc(age)) %&gt;%
+  select(age) %&gt;%
+  head(1) %&gt;%
+  pluck(1)</code></pre>
+<pre><code>## [1] 95</code></pre>
+<pre class="r"><code># Proporiton of females that voted for Trump
+
+cces %&gt;% 
+  filter(gender == &quot;Female&quot;) %&gt;%
+  summarize(prop =  sum(trump == 1) / n())</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##    prop
+##   &lt;dbl&gt;
+## 1 0.399</code></pre>
 </div>
 <div id="scene-2" class="section level1">
 <h1>Scene 2</h1>

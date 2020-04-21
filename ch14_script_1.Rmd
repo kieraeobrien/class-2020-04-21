@@ -29,6 +29,22 @@ cces <- read_rds("cces_initial.rds")
 
 2) What proportion of females voted for Trump? 
 
+```{r s1}
+# Age of oldest respondent
+
+cces %>%
+  arrange(desc(age)) %>%
+  select(age) %>%
+  head(1) %>%
+  pluck(1)
+
+# Proporiton of females that voted for Trump
+
+cces %>% 
+  filter(gender == "Female") %>%
+  summarize(prop =  sum(trump == 1) / n())
+
+```
 
 # Scene 2
 
